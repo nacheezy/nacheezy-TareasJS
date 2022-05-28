@@ -1,5 +1,5 @@
 body{
-    background-color: #110f0fea;
+    background-color: rgb(13, 13, 80);
 }
 header, .alert{
     z-index: 100;
