@@ -27,12 +27,12 @@ function addToCarritoItem(e){
 
 function addItemCarrito(newItem){
 
-    const alert = document.querySelector('.alert')
+    /* const alert = document.querySelector('.alert')
 
     setTimeout( function(){
         alert.classList.add('hide')
     }, 2000)
-        alert.classList.remove('hide')
+        alert.classList.remove('hide') */
 
     const InputElemnto = tbody.getElementsByClassName('input__elemento')
     for(let i =0; i < carrito.length ; i++){
@@ -88,7 +88,7 @@ function CarritoTotal(){
     })
 
     itemCartTotal.innerHTML = `Total $${Total}`
-    /* addLocalStorage() */
+    addLocalStorage()
 }
 
 function removeItemCarrito(e){
@@ -102,14 +102,14 @@ function removeItemCarrito(e){
         }
     }
 
-    const alert = document.querySelector('.remove')
+    /* const alert = document.querySelector('.remove')
 
     setTimeout( function(){
         alert.classList.add('remove')
     }, 2000)
-        alert.classList.remove('remove')
+        alert.classList.remove('remove')*/
 
-    tr.remove()
+    tr.remove() 
     CarritoTotal()
 }
 
@@ -126,7 +126,7 @@ function sumaCantidad(e){
     })
 }
 
-/* function addLocalStorage(){
+function addLocalStorage(){
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
@@ -136,4 +136,39 @@ window.onload = function(){
     carrito = storage;
     renderCarrito()
     }
-} */
+} 
+
+const btnAlert = document.querySelector("#btnAlert")
+
+btnAlert.addEventListener("click", ()=>{
+
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Tu compra ha sido realizada con exito',
+        showConfirmButton: false,
+        timer: 3000,
+    })
+})
+
+const btnAgCarrito = document.querySelector(".btnAgCarrito")
+
+btnAgCarrito.addEventListener("click", ()=>{
+
+    Swal.fire({
+        title: 'Desea agregar este producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, agregar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Agregado!',
+                'Su producto ha sido Agregado al carrito.',
+                'success'
+            )
+        }
+    })
+})
