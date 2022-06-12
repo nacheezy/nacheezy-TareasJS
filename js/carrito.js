@@ -50,7 +50,6 @@ function addItemCarrito(newItem){
     renderCarrito()
 } 
 
-
 function renderCarrito(){
     tbody.innerHTML = ''
     carrito.map(item => {
@@ -78,6 +77,7 @@ function renderCarrito(){
     })
     CarritoTotal()
 }
+
 
 function CarritoTotal(){
     let Total = 0;
@@ -172,3 +172,22 @@ btnAgCarrito.addEventListener("click", ()=>{
         }
     })
 })
+
+const newCard = document.querySelector('#newCard')
+
+fetch ('js/data.json')
+    .then((resp) => resp.json() )
+    .them((data)=> {
+        console.log(data);
+        data.forEach((producto)=> {
+            const newCard = document.createElement('div')
+            newcard.innerHTML = `
+            <><>
+            <h4>${producto.name.toUpperCase()} </h4>
+            <p>${producto.price}</p>
+            <p>${producto.id}</p>
+            <img src="${producto.img}>
+            `
+            newCard.append(newCard)
+        })
+    })
