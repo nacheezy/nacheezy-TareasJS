@@ -194,7 +194,14 @@ function enviarMail(){
     }
     emailjs.send("service_bi5rqh2", "template_qnhygpn", datos)
         .then(function(res){
-            alert("success !" + res.status);
+            Swal.fire({
+        position: 'center',
+        icon: 'success' + res.status,
+        title: 'Tu compra ha sido realizada con exito',
+        showConfirmButton: false,
+        timer: 3000,
+    })
+            
         })
 }
 
