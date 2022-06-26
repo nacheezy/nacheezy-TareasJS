@@ -1,7 +1,7 @@
 [
-    {"id":1,"name": "Camiseta Centenario","price": 1000,"img":"../img/ford.jpg"},
+    {"id":1,"name": "Camiseta Centenario","price": 1000,"img":"img/ford.jpg"},
     {"id":2,"name": "Camiseta LigaAmericas","price": 1000,"img":"../img/ford.jpg"},
     {"id":3,"name": "Camiseta Facu Campazzo","price": 1000,"img":"../img/ford.jpg"},
-    {"id":4,"name": "Camiseta Pentacampeon","price": 1000,"img":"../img/ford.jpg"}
+    {"id":4,"name": "Camiseta Pentacampeon","price": 1000,"img":"../img/pentaCampeon.jpg"}
 
 ]

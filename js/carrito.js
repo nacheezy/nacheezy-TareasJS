@@ -1,3 +1,5 @@
+const { EmailJSResponseStatus } = require("@emailjs/browser")
+
 const Clickbutton = document.querySelectorAll('.button')
 const tbody = document.querySelector('.tbody')
 let carrito = []
@@ -6,7 +8,7 @@ Clickbutton.forEach(btn => {
     btn.addEventListener('click', addToCarritoItem)
 })
 
-
+// funcion para agregar al carrito
 function addToCarritoItem(e){
     const button = e.target
     const item = button.closest('.card')
@@ -78,7 +80,7 @@ function renderCarrito(){
     CarritoTotal()
 }
 
-
+// funcion para calcular el total
 function CarritoTotal(){
     let Total = 0;
     const itemCartTotal = document.querySelector('.itemCartTotal')
@@ -91,6 +93,7 @@ function CarritoTotal(){
     addLocalStorage()
 }
 
+// funcion para remover items del carrito
 function removeItemCarrito(e){
     const buttonDelete = e.target
     const tr = buttonDelete.closest(".ItemCarrito")
@@ -113,6 +116,7 @@ function removeItemCarrito(e){
     CarritoTotal()
 }
 
+// funcion para sumar en cantidad, al carrito
 function sumaCantidad(e){
     const sumaInput  = e.target
     const tr = sumaInput.closest(".ItemCarrito")
@@ -173,21 +177,25 @@ btnAgCarrito.addEventListener("click", ()=>{
     })
 })
 
-const newCard = document.querySelector('#newCard')
+// funcion enviar formulario    
 
-fetch ('js/data.json')
-    .then((resp) => resp.json() )
-    .them((data)=> {
-        console.log(data);
-        data.forEach((producto)=> {
-            const newCard = document.createElement('div')
-            newcard.innerHTML = `
-            <><>
-            <h4>${producto.name.toUpperCase()} </h4>
-            <p>${producto.price}</p>
-            <p>${producto.id}</p>
-            <img src="${producto.img}>
-            `
-            newCard.append(newCard)
+
+    document.getElementById ('form')
+    .addEventListener('submit', function(event){
+        event.preventDefault();
+    });
+
+function enviarMail(){
+    let datos = {
+        from_name : document.getElementById("nombre").value,
+        apellido : document.getElementById("apellido").value,
+        telefono : document.getElementById("telefono").value,
+        mensaje : document.getElementById("mensaje").value
+    }
+    emailjs.send("service_bi5rqh2", "template_qnhygpn", datos)
+        .then(function(res){
+            alert("success !" + res.status);
         })
-    })
+}
+
+enviarMail()
